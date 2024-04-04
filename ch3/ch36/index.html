@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>하위에서 상위로 이벤트 전달</title>
+  </head>
+  <body>
+  	<div id="app">
+      <!-- 실행순서 3 printText() 실행-->
+      <child-component v-on:show-log="printText"></child-component>
+    </div>
+
+    <script src="../../js/vue.js"></script>
+    <script>
+      Vue.component('child-component',{
+        //실행순서 1 showLog() 메소드가 실행
+        template: '<button v-on:click="showLog">show</button>',
+        methods: {
+          //실행순서 2 show-log 이벤트가 발생
+          showLog: function(){
+            this.$emit('show-log');
+          }
+        }
+      });
+
+      new Vue({
+        el: '#app',
+        data: {
+          message: 'Hello Vue! passed from parent Component'
+        },
+        methods:{
+          //실행순서 4
+          printText: function(){
+            console.log("received an event");
+          }
+        }
+      });
+
+    </script>
+  </body>
+</html>

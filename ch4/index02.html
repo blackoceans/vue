@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue Router Sample</title>
+</head>
+<body>
+	<div id="app">
+        <!-- 화면에 보여질 영역 -->
+        <router-view></router-view>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-router.js"></script>
+    <script>
+        var User = {
+            template: `
+			//그레이브 : grave탭과 개행을 인식함, 특정변수 삽입용
+			//원래 태그 넣는 부분, div넣고 많이 넣은 것일뿐
+				<div>
+                	User Component
+                	<router-view></router-view>
+            	</div>
+			`
+        };
+        var UserProfile = {template: '<p>User Profile Component</p>'};
+        var UserPost = {template: '<p>User Post Component</p>'};
+
+        var routes = [
+            {
+                path: '/user', component: User,
+                children: [
+                    {
+                        path: 'posts',
+                        component: UserPost
+                    },
+                    {
+                        path: 'prof', //주소창에 들어가는 이름, 마음대로 줄여도 괜찮
+                        component: UserProfile
+                    }
+                ]
+            }
+
+        ];
+        var router = new VueRouter({
+            //mode: 'history', <<root가 설정된 서버에서 작동함
+            routes
+        });
+        var app = new Vue({
+            router
+        }).$mount('#app'); //el 대신 마운트 씀
+    </script>
+</body>
+</html>

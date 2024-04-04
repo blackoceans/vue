@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>Vue Component Registration</title>
+  </head>
+  <body>
+  	<div id="app">
+      <my-component1></my-component1>
+      <my-component2></my-component2>
+    </div>
+    <script src="../../js/vue.js"></script>
+    <script>
+      var cmp1 = { //첫번째 컴퍼넌트
+        template:'<div>첫 번째 지역 컴퍼넌트 : {{cmp1Data}}</div>',
+        data: function(){
+          return {
+            cmp1Data : 100
+          }
+        }
+      };
+      var cmp2 = { //두번째 컴퍼넌트
+        template:'<div>두 번째 지역 컴퍼넌트 : {{cmp2Data}}</div>',
+        data: function(){
+          return {
+            cmp2Data : cmp1.data.cmp1Data //지역변수라서 위에서 쓰고 끝, 여기서 못 끌어다 씀, 안 나옴
+          }
+        }
+      };
+
+      new Vue({
+        el: '#app',
+        components:{
+          'my-component1': cmp1,
+          'my-component2': cmp2
+        }
+      });
+
+    </script>
+  </body>
+</html>

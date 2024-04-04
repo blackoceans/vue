@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>Vue Sample</title>
+  </head>
+  <body>
+  	<div id="app">
+      {{message}}
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          message: 'Hello Vue.js'
+        },
+        beforeCreate: function(){
+          console.log("beforeCreate");
+        },
+        created: function(){
+          console.log("created");
+        },
+        mounted: function(){ // mounted 갖다 붙인다는 의미, message에 값을 옮기는?
+          console.log("mounted");
+          //this.message = 'Hello'; 값을 바꿔줘야 아래 updated가 작동함
+        },
+        updated: function(){
+          console.log("updated");
+        }
+      });
+    </script>
+  </body>
+</html>
