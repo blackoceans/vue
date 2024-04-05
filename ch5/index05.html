@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>자바스크립트 표현식</title>
+</head>
+<body>
+	<div id="app">
+        <p>{{message}}</p>
+        <p>{{message + "!!!"}}</p>
+        <p>{{message.split('').reverse().join('')}}</p>
+        <!-- 스플릿은 message에 들어있는 문자를 한글자씩 띄어쓰기해서 나눔, 리버스는 순서를 반대로, 조인은 스플릿의 반대 -->
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello'
+            }
+        });
+    </script>
+</body>
+</html>

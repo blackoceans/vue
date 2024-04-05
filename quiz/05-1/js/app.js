@@ -4,6 +4,7 @@ var app = new Vue({
     message : 'Hello Vue.js',
     // 할 일 #1
     // 새로운 데이터 속성을 1개 추가하고, 머스타쉬 {{ }} 데이터 바인딩을 이용하여 화면에 표시해보세요.
+    secondMessage: 'Pain past is pleasure',
 
     uid: 'id10',
     // 할 일 #2
@@ -25,5 +26,8 @@ var app = new Vue({
 
     // 할 일 #3
     // eventMethod를 하나 추가하고 index.html의 #3 영역에 해당 이벤트를 실행하는 버튼을 추가하세요.
+    eventMethod() {
+      console.log("click");
+    }
   }
 });

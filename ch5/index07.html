@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>디렉티브</title>
+</head>
+<body>
+	<div id="app">
+		<a v-if="flag">Study Vue.js</a> <!-- flag값이 트루면 study vue.js글이 보임 -->
+		<ul>
+			<li v-for="system in systems">{{ system }}</li> <!-- systems(3개)의 개수만큼 system:li개수를 반복해라  -->
+		</ul>
+		<p v-show="flag">Study Vue.js</p> <!-- flag가 트루면 보여라 -->
+		<h5 v-bind:id="uid">뷰 입문하기</h5>
+		<button v-on:click="popupAlert">경고창버튼</button>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                flag: false,
+				systems:['android', 'ios', 'window'],
+				uid: 'id'
+            },
+			methods: {
+				popupAlert: function(){
+					return alert('경고창');
+				}
+			}
+        });
+    </script>
+</body>
+</html>

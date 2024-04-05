@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue Sample 1</title>
+</head>
+<body>
+	<div id="app">
+        <h3 v-once>{{message}}</h3> //once해놓으면 변화해도 안 바뀌고 고정시킴
+        <h3>{{sayHello()}}</h3>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello'
+            },
+            methods: {
+                sayHello: function(){
+                    this.message = "안녕?"
+                    return this.message
+                }
+            }
+        });
+    </script>
+</body>
+</html>
